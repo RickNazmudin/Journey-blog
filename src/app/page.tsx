@@ -1,9 +1,7 @@
-// src/app/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import { getSession } from "next-auth/react";
-import { Session } from "next-auth";
 import styled from "styled-components";
 
 // Definisi tipe data untuk postingan
@@ -80,7 +78,10 @@ const HomePage = () => {
     // Fetch sesi pengguna dari next-auth
     const fetchSession = async () => {
       const sessionData = await getSession();
-      // Jika perlu menggunakan session, lakukan di sini
+      if (sessionData) {
+        // Gunakan sessionData jika diperlukan
+        console.log(sessionData); // Contoh penggunaan
+      }
     };
 
     // Fetch postingan dari API

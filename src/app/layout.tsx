@@ -1,5 +1,5 @@
-// src/app/layout.tsx
 "use client";
+
 import { useState } from "react";
 import "./globals.css";
 import { Roboto } from "next/font/google";
@@ -11,6 +11,7 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
+// Styled components
 const Header = styled.header`
   background-color: #98afc7; /* Biru muda */
   padding: 1rem;
@@ -33,53 +34,32 @@ const NavBrand = styled.div`
   }
 `;
 
-const NavLinks = styled(
-  ({
-    isOpen,
-    children,
-    role,
-    ...rest
-  }: {
-    isOpen: boolean;
-    children: React.ReactNode;
-    role?: string;
-  }) => (
-    <ul {...rest} role={role}>
-      {children}
-    </ul>
-  )
-)`
-  display: flex;
+const NavLinks = styled.ul<{ isOpen: boolean }>`
   list-style: none;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: #98afc7; /* Biru muda */
+  padding: 1rem;
+  display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background-color: #98afc7; /* Biru muda */
-    display: ${(props) => (props.isOpen ? "flex" : "none")};
-    padding: 1rem;
+  @media (min-width: 769px) {
+    display: flex; /* Tampilkan saat di layar besar */
+    flex-direction: row; /* Tampilkan dalam barisan */
+    position: static; /* Reset posisi pada layar besar */
   }
 `;
 
 const NavItem = styled.li`
-  margin-left: 1rem;
-
-  @media (max-width: 768px) {
-    margin: 0.5rem 0;
-  }
+  margin: 0.5rem 0;
 
   a {
     color: #2c3e50; /* Warna teks gelap */
     text-decoration: none;
     display: flex;
     align-items: center;
-
-    i {
-      margin-right: 0.5rem;
-    }
   }
 `;
 
@@ -127,7 +107,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false); // Menggunakan isNavOpen
 
   return (
     <html lang="en">
@@ -147,6 +127,7 @@ export default function RootLayout({
             <HamburgerButton onClick={() => setIsNavOpen(!isNavOpen)}>
               <i className="fas fa-bars"></i>
             </HamburgerButton>
+            {/* Menggunakan isNavOpen di sini untuk mengontrol tampilan NavLinks */}
             <NavLinks isOpen={isNavOpen} role="navigation">
               <NavItem>
                 <Link href="/" passHref>
