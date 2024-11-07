@@ -150,26 +150,26 @@ export default function RootLayout({
             <NavLinks isOpen={isNavOpen} role="navigation">
               <NavItem>
                 <Link href="/" passHref>
-                  <a>
+                  <span>
                     <i className="fas fa-home"></i>
-                    <span>Home</span>
-                  </a>
+                    Home
+                  </span>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/login" passHref>
-                  <a>
+                  <span>
                     <i className="fas fa-user"></i>
-                    <span>Login</span>
-                  </a>
+                    Login
+                  </span>
                 </Link>
               </NavItem>
               <NavItem>
                 <Link href="/admin" passHref>
-                  <a>
+                  <span>
                     <i className="fas fa-cog"></i>
-                    <span>Admin</span>
-                  </a>
+                    Admin
+                  </span>
                 </Link>
               </NavItem>
             </NavLinks>

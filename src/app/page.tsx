@@ -74,14 +74,13 @@ const PostContent = styled.p`
 
 // Komponen halaman utama
 const HomePage = () => {
-  const [session, setSession] = useState<Session | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     // Fetch sesi pengguna dari next-auth
     const fetchSession = async () => {
       const sessionData = await getSession();
-      setSession(sessionData);
+      // Jika perlu menggunakan session, lakukan di sini
     };
 
     // Fetch postingan dari API
