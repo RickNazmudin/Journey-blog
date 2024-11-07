@@ -1,3 +1,4 @@
+// src/app/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -5,12 +6,14 @@ import { getSession } from "next-auth/react";
 import { Session } from "next-auth";
 import styled from "styled-components";
 
+// Definisi tipe data untuk postingan
 interface Post {
   id: number;
   title: string;
   content: string;
 }
 
+// Styled components untuk tata letak halaman
 const PageContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
@@ -69,16 +72,19 @@ const PostContent = styled.p`
   font-size: 1rem;
 `;
 
+// Komponen halaman utama
 const HomePage = () => {
   const [session, setSession] = useState<Session | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
+    // Fetch sesi pengguna dari next-auth
     const fetchSession = async () => {
       const sessionData = await getSession();
       setSession(sessionData);
     };
 
+    // Fetch postingan dari API
     const fetchPosts = async () => {
       try {
         const response = await fetch("/api/posts");

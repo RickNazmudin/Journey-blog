@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./globals.css";
 import { Roboto } from "next/font/google";
 import styled from "styled-components";
+import Link from "next/link";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -148,22 +149,28 @@ export default function RootLayout({
             </HamburgerButton>
             <NavLinks isOpen={isNavOpen} role="navigation">
               <NavItem>
-                <a href="/">
-                  <i className="fas fa-home"></i>
-                  <span>Home</span>
-                </a>
+                <Link href="/" passHref>
+                  <a>
+                    <i className="fas fa-home"></i>
+                    <span>Home</span>
+                  </a>
+                </Link>
               </NavItem>
               <NavItem>
-                <a href="/login">
-                  <i className="fas fa-user"></i>
-                  <span>Login</span>
-                </a>
+                <Link href="/login" passHref>
+                  <a>
+                    <i className="fas fa-user"></i>
+                    <span>Login</span>
+                  </a>
+                </Link>
               </NavItem>
               <NavItem>
-                <a href="/admin">
-                  <i className="fas fa-cog"></i>
-                  <span>Admin</span>
-                </a>
+                <Link href="/admin" passHref>
+                  <a>
+                    <i className="fas fa-cog"></i>
+                    <span>Admin</span>
+                  </a>
+                </Link>
               </NavItem>
             </NavLinks>
           </Nav>

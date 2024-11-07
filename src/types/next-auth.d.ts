@@ -1,12 +1,15 @@
-import NextAuth from "next-auth";
+// src/types/next-auth.d.ts
+import NextAuth, { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
+  // Deklarasi tipe custom User
   interface User {
     id: string; // ID pengguna
     email: string | null; // Email pengguna
   }
 
-  interface Session {
-    user: User; // Menggunakan tipe pengguna kustom
+  // Deklarasi tipe custom Session
+  interface Session extends DefaultSession {
+    user: User; // Menggunakan tipe pengguna custom yang didefinisikan di atas
   }
 }
